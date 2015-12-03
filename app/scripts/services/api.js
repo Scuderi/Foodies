@@ -19,7 +19,7 @@ angular.module('recipiesTestApp')
     };
 
     api.getDetailRecipe = function(id){
-      var url = "http://food2fork.com/api/get?key=??&rId=" + id;
+      var url = "http://food2fork.com/api/get?key=b684e60483b5d68cde40196e178c30e4&rId=" + id;
       return $http({
         method: 'GET',
         headers: headers,
@@ -35,7 +35,7 @@ angular.module('recipiesTestApp')
     }
 
     api.getRecipes = function() {
-      var url = "http://food2fork.com/api/search?key=??&q=chicken";
+      var url = "http://food2fork.com/api/search?key=b684e60483b5d68cde40196e178c30e4&q=chicken";
       $http({
         method: 'GET',
         headers: headers,
