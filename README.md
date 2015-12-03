@@ -1,12 +1,16 @@
 # recipies-test
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.14.0.
+## projekt teilnehmer
+Renzo Scuderi
+Charlotte Vazquez
 
-## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+## Site web
+L'application est disponible ici : TODO
 
-## Testing
+## Documentation
+Manuel d'utilisateur (TODO ajouter un lien)
 
-Running `grunt test` will run the unit tests with karma.
+Specifications (TODO)
+Specifications de l'API (TODO)
+
