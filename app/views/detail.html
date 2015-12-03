@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-sm-4 col-md-4">
+    <h1>My Fridge</h1>
+    <p>Filtre :
+    <input type="text" ng-model="searchInMyFridge"></input></p>
+
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="el in detail.data.myFridge | filter: searchInMyFridge track by $index ">
+        <span>{{el}}</span>
+        <span class="glyphicon glyphicon-trash" ng-click="detail.remove(el)"></span>
+      </li>
+    </ul>
+    <p>
+    <div class="row">
+      <div class="col-sm-4"><input type="text" ng-model="detail.ingredient"></input></div>
+    </div></p>
+
+    <div>
+      <button type="button" class="btn btn-default" ng-click="detail.add()">Ajouter</button>
+    </div>
+    <h1>Shopping list</h1>
+    <p>Filtre :
+      <input type="text" ng-model="searchInShoppingList"></input></p>
+
+    <ul class="list-group">
+      <li class="list-group-item liStyleNone" ng-repeat="el in detail.data.shoppingList | filter: searchInShoppingList track by $index ">
+        <span>{{el}}</span>
+        <span class="glyphicon glyphicon-arrow-up" ng-click="detail.add(el)"></span>
+        <span class="glyphicon glyphicon-trash" ng-click="detail.removeToShoppingList(el)"></span>
+      </li>
+    </ul>
+    <p>
+  </div>
+  <div class="col-sm-8 col-md-8">
+    <!--recipe detail-->
+    <h1>{{detail.api.detailRecipe.title}}</h1>
+    <div  class="well"><img src="{{detail.api.detailRecipe.image_url}}" class="img-responsive center-block"/></div>
+
+    <ul class="list-group">
+
+      <li class="liStyleNone" ng-repeat="el in detail.listOfIngredients track by $index" ng-switch="el.status" >
+        <div >
+          <div ng-switch-when="onMyFridge" class="alert alert-success" role="alert">{{el.name}}</div>
+          <div ng-switch-when="onMyShoppingList" class="alert alert-info" role="alert">{{el.name}} <span class="glyphicon glyphicon-minus" ng-click="detail.removeToShoppingList(el)"></span> </div>
+          <div ng-switch-when="nowhere" class="alert alert-danger" role="alert">{{el.name}} <span class="glyphicon glyphicon-plus" ng-click="detail.addToShoppingList(el)"></span> </div>
+        </div>
+      </li>
+    </ul>
+    <a ng-href="{{detail.api.detailRecipe.source_url}}" target="_blank">Lien recette</a>
+  </div>
+</div>
