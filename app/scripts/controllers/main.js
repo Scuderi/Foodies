@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name recipiesTestApp.controller:MainCtrl
+ * @name Foodies.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the recipiesTestApp
+ * Controller of the Foodies
  */
-angular.module('recipiesTestApp')
+angular.module('Foodies')
   .controller('MainCtrl', function (api) {
     var main = this;
     main.api = api;

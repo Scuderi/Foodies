@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name recipiesTestApp.api
+ * @name Foodies.api
  * @description
  * # api
- * Service in the recipiesTestApp.
+ * Service in the Foodies.
  */
-angular.module('recipiesTestApp')
+angular.module('Foodies')
   .service('api', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     var api = this;
