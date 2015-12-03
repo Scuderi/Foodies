@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name recipiesTestApp.controller:AboutCtrl
+ * @name Foodies.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the recipiesTestApp
+ * Controller of the Foodies
  */
-angular.module('recipiesTestApp')
+angular.module('Foodies')
   .controller('detailCtrl', function ($routeParams, api, data) {
     var detail = this;
     detail.listOfIngredients = [];

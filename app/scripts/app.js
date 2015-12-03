@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name recipiesTestApp
+ * @name Foodies
  * @description
- * # recipiesTestApp
+ * # Foodies
  *
  * Main module of the application.
  */
 angular
-  .module('recipiesTestApp', [
+  .module('Foodies', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
