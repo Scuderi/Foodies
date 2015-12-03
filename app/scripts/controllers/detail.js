@@ -47,7 +47,7 @@ angular.module('Foodies')
         status = "nowhere";
       }};
 
-    detail.add = function() {
+    detail.addToFrige = function() {
       detail.data.myFridge.push(detail.ingredient);
       updateListeOfIngredients(detail.ingredient, "add");
       detail.ingredient = "";
