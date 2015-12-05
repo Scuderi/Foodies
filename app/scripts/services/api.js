@@ -29,10 +29,10 @@ angular.module('Foodies')
       });
     }
 
-    api.getRecipes = function() {
+    api.getRecipes = function(item) {
       $http({
         method: 'GET',
-        url: urlServerAPI + portServerAPI + "/search"
+        url: urlServerAPI + portServerAPI + "/search/" + item
       }).
       success(function(status) {
         api.recipes = status.recipes;

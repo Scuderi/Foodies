@@ -13,13 +13,16 @@ function onRequest(req, res){
     res.end();
     return;
   }
+  // remove slash
   req.url = req.url.substring(1);
   var url = 'http://food2fork.com/api/get?key=' + apiKey.key + '&rId=' + req.url;
 
   if (url.indexOf('search') < 0){
 
   }else{
-    url = 'http://food2fork.com/api/search?key=' + apiKey.key + '&q=chicken';
+    url = 'http://food2fork.com/api/search?key=' + apiKey.key + '&q=';
+    // remove mode
+    url += req.url.substring(7);
   }
   console.log(req.url);
   console.log(url);

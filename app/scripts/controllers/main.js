@@ -11,5 +11,4 @@ angular.module('Foodies')
   .controller('MainCtrl', function (api) {
     var main = this;
     main.api = api;
-    main.api.getRecipes();
   });
