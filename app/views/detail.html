@@ -39,10 +39,10 @@
     <ul class="list-group">
 
       <li class="liStyleNone" ng-repeat="el in detail.listOfIngredients track by $index" ng-switch="el.status" >
-        <div >
+        <div>
           <div ng-switch-when="onMyFridge" class="alert alert-success" role="alert">{{el.name}}</div>
-          <div ng-switch-when="onMyShoppingList" class="alert alert-info" role="alert">{{el.name}} <span class="glyphicon glyphicon-minus" ng-click="detail.removeToShoppingList(el.name)"></span> </div>
-          <div ng-switch-when="nowhere" class="alert alert-danger" role="alert">{{el.name}} <span class="glyphicon glyphicon-plus" ng-click="detail.addToShoppingList(el)"></span> </div>
+          <div ng-switch-when="onMyShoppingList" class="alert alert-info cursorPointer" role="alert"  ng-click="detail.removeToShoppingList(el.name)">{{el.name}}</div>
+          <div ng-switch-when="nowhere" class="alert alert-danger cursorPointer" role="alert" ng-click="detail.addToShoppingList(el)">{{el.name}}</div>
         </div>
       </li>
     </ul>
