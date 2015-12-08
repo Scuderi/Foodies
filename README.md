@@ -1,6 +1,6 @@
 # recipies-test
 
-## projekt teilnehmer
+## Créateurs
 Renzo Scuderi
 Charlotte Vazquez
 
