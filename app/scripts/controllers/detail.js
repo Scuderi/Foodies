@@ -17,13 +17,13 @@ angular.module('Foodies')
 
     // load datas for the recipe
     var promise = detail.api.getDetailRecipe(detail.id);
-    // check if our ingredients in fridge are in the recipe
+    // check out if our ingredients in the fridge are in the recipe
     promise.then(function(){
-        detail.createListeOfIngredient();
+        detail.createListOfIngredient();
       }
     );
 
-    detail.createListeOfIngredient = function (){
+    detail.createListOfIngredient = function (){
       var status;
       for (var i = 0; i < detail.api.detailRecipe.ingredients.length; i++) {
         for (var y = 0; y < detail.data.myFridge.length; ++y) {
@@ -49,40 +49,50 @@ angular.module('Foodies')
 
     detail.addToFrige = function() {
       detail.data.myFridge.push(detail.ingredient);
-      updateListeOfIngredients(detail.ingredient, "add");
+      updateListOfIngredients(detail.ingredient, "add");
       detail.ingredient = "";
-    }
+    };
     detail.add = function(elem) {
       detail.data.myFridge.push(elem);
       detail.removeToShoppingList(elem);
-      updateListeOfIngredients(elem, "add");
+      updateListOfIngredients(elem, "add");
       detail.ingredient = "";
-    }
+    };
 
     detail.remove = function(elem) {
       detail.data.myFridge.splice(detail.data.myFridge.indexOf(elem),1);
+<<<<<<< HEAD
       updateListeOfIngredients(elem, "delete");
     }
+=======
+      updateListOfIngredients(elem, "delete");
+    };
+>>>>>>> origin/master
 
     detail.addToShoppingList = function(elem) {
       detail.data.shoppingList.push(elem.name);
-      updateListeOfIngredients(elem.name, "addToShoppingList");
-    }
+      updateListOfIngredients(elem.name, "addToShoppingList");
+    };
 
     detail.removeToShoppingList = function(elem) {
       detail.data.shoppingList.splice(detail.data.shoppingList.indexOf(elem),1);
+<<<<<<< HEAD
       updateListeOfIngredients(elem, "delete");
     }
+=======
+      updateListOfIngredients(elem, "delete");
+    };
+>>>>>>> origin/master
 
     detail.load = function(){
       data.load();
-    }
+    };
 
     detail.save = function (elem){
       data.save(elem);
-    }
+    };
 
-    var updateListeOfIngredients = function (elem, mode) {
+    var updateListOfIngredients = function (elem, mode) {
       for (var i = 0; i < detail.listOfIngredients.length; ++i) {
         if (detail.listOfIngredients[i].name.indexOf(elem) > -1) {
           if(mode === "add"){
@@ -94,9 +104,9 @@ angular.module('Foodies')
             detail.listOfIngredients[i].status = "nowhere";
           }
           else{
-            console.log("error : mode non reconnu")
+            console.log("error : mode non reconnu");
           }
         }
       }
-    }
+    };
   });

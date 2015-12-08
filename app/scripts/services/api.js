@@ -27,7 +27,7 @@ angular.module('Foodies')
       error(function(status) {
         console.log('ko');
       });
-    }
+    };
 
     api.getRecipes = function(item) {
       $http({
@@ -40,6 +40,6 @@ angular.module('Foodies')
       error(function(status) {
         console.log('ko');
       });
-    }
+    };
 
   });

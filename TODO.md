@@ -1,9 +1,7 @@
 # Foodie TODO
-- rezise img
 
 - firebase
-	- create new gmail account
-	- add too Foodie (server-side)
+	- add to Foodie (server-side)
 	- create userLogin
 		- function salt + md5 pwd
 		- shoppingList + fridge for all userLogin
@@ -17,7 +15,7 @@
 	- multi-pages result
 	
 - Detail
-	- lower case all ingredient
+	- lower case all ingredient (Charlotte)
 	- show witch string match
 	- salt shouldn't match unsalted
 	- add/delete all to/from frige/shoppinglist
