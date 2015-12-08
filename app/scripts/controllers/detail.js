@@ -43,7 +43,7 @@ angular.module('Foodies')
             }
           }
         }
-        detail.listOfIngredients.push({name: detail.api.detailRecipe.ingredients[i], status: status});
+        detail.listOfIngredients.push({name: detail.api.detailRecipe.ingredients[i].toLowerCase(), status: status});
         status = "nowhere";
       }};
 
@@ -60,7 +60,7 @@ angular.module('Foodies')
     }
 
     detail.remove = function(elem) {
-      detail.data.myFridge.splice(detail.data.myFridge.indexOf(elem),1)
+      detail.data.myFridge.splice(detail.data.myFridge.indexOf(elem),1);
       updateListeOfIngredients(elem, "delete");
     }
 
@@ -70,7 +70,7 @@ angular.module('Foodies')
     }
 
     detail.removeToShoppingList = function(elem) {
-      detail.data.shoppingList.splice(detail.data.shoppingList.indexOf(elem),1)
+      detail.data.shoppingList.splice(detail.data.shoppingList.indexOf(elem),1);
       updateListeOfIngredients(elem, "delete");
     }
 
