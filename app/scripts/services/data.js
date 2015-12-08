@@ -16,10 +16,5 @@ angular.module('Foodies')
 
     this.save = function(elem){
       window.localStorage.setItem(this.generateUUID(), JSON.stringify(elem));
-    }
-
-    this.load = function(){
-      this.movies = [];
-      for (var i = 0; i < localStorage.length; i++)this.myFridge.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
     };
   });

@@ -3,20 +3,24 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-// CUSTOME
+// CUSTOM
 
 .cursorPointer {
   cursor:pointer;
 }
+
+/* use to display images*/
 .thumbnail{
   height: 400px;
   overflow: auto;
 }
 
+/* to have list without any style*/
 .liStyleNone{
   list-style-type: none;
 }
 
+/**/
 .center-block {
   display: block;
   margin-left: auto;

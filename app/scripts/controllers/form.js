@@ -13,5 +13,5 @@ angular.module('Foodies')
     formCtrl.api = api;
     formCtrl.update = function (search){
       formCtrl.api.getRecipes(search.ingredient);
-    }
+    };
   });
