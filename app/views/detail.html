@@ -1,13 +1,13 @@
 <div class="row">
-  <div class="col-sm-4 col-md-4">
+  <div  ng-show="detail.data.authData" class="col-sm-4 col-md-4">
     <h1>My Fridge</h1>
     <p>Filtre :
     <input type="text" ng-model="searchInMyFridge"></input></p>
 
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="el in detail.data.myFridge | filter: searchInMyFridge track by $index ">
-        <span>{{el}}</span>
-        <span class="glyphicon glyphicon-trash" ng-click="detail.remove(el)"></span>
+        <span>{{el.name}}</span>
+        <span class="glyphicon glyphicon-trash" ng-click="detail.removeFromFridge(el)"></span>
       </li>
     </ul>
     <p>
@@ -34,18 +34,36 @@
   <div>
     <button ng-click="detail.buildMessage()">Print</button>
   </div>
-  <div class="col-sm-8 col-md-8">
+  <div>
+    <button ng-hide="detail.data.authData" ng-click="detail.data.getMyData()">login</button>
+  </div>
+  <div>
+    <button ng-show="detail.data.authData" ng-click="detail.data.logout()">logout</button>
+  </div>
+
+  <div ng-show="detail.data.authData" class="col-sm-8 col-md-8">
     <!--recipe detail-->
     <h1>{{detail.api.detailRecipe.title}}</h1>
     <div  class="well"><img src="{{detail.api.detailRecipe.image_url}}" class="img-responsive center-block"/></div>
-
     <ul class="list-group">
-
-      <li class="liStyleNone" ng-repeat="el in detail.listOfIngredients track by $index" ng-switch="el.status" >
+      <li class="liStyleNone" ng-repeat="el in detail.data.listOfIngredients track by $index" ng-switch="el.status" >
         <div>
           <div ng-switch-when="onMyFridge" class="alert alert-success" role="alert">{{el.name}}</div>
           <div ng-switch-when="onMyShoppingList" class="alert alert-info cursorPointer" role="alert"  ng-click="detail.removeFromShoppingList(el.name)">{{el.name}}</div>
           <div ng-switch-when="nowhere" class="alert alert-danger cursorPointer" role="alert" ng-click="detail.addToShoppingList(el)">{{el.name}}</div>
+        </div>
+      </li>
+    </ul>
+    <a ng-href="{{detail.api.detailRecipe.source_url}}" target="_blank">Lien recette</a>
+  </div>
+
+  <div  ng-hide="detail.data.authData" class="col-sm-8 col-md-8">
+    <h1>{{detail.api.detailRecipe.title}}</h1>
+    <div  class="well"><img src="{{detail.api.detailRecipe.image_url}}" class="img-responsive center-block"/></div>
+    <ul class="list-group">
+      <li class="liStyleNone" ng-repeat="el in detail.api.detailRecipe.ingredients track by $index">
+        <div>
+          <div class="alert alert-success" role="alert">{{el}}</div>
         </div>
       </li>
     </ul>
