@@ -83,35 +83,38 @@ angular.module('Foodies')
             }
           }
         }
-        detail.listOfIngredients.push({name: detail.api.detailRecipe.ingredients[i], status: status});
+        detail.listOfIngredients.push({name: detail.api.detailRecipe.ingredients[i].toLowerCase(), status: status});
         status = "nowhere";
       }};
 
-    detail.addToFrige = function() {
-      detail.data.myFridge.push(detail.ingredient);
-      updateListOfIngredients(detail.ingredient, "add");
+    detail.addToFridge = function() {
+      var ingLC = detail.ingredient.toLowerCase();
+      detail.data.myFridge.push(ingLC);
+      updateListOfIngredients(ingLC, "addToFridge");
       detail.ingredient = "";
     };
-    detail.add = function(elem) {
-      detail.data.myFridge.push(elem);
-      detail.removeToShoppingList(elem);
-      updateListOfIngredients(elem, "add");
+
+    //from shopping list to the fridge
+    detail.fromListToFridge = function(elem) {
+      var ingLC = elem.toLowerCase();
+      detail.data.myFridge.push(ingLC);
+      detail.removeFromShoppingList(elem);
+      updateListOfIngredients(ingLC, "addToFridge");
       detail.ingredient = "";
     };
 
     detail.remove = function(elem) {
-
       detail.data.myFridge.splice(detail.data.myFridge.indexOf(elem),1);
-
       updateListOfIngredients(elem, "delete");
     };
 
     detail.addToShoppingList = function(elem) {
-      detail.data.shoppingList.push(elem.name);
-      updateListOfIngredients(elem.name, "addToShoppingList");
+      var ingLC = elem.name.toLowerCase();
+      detail.data.shoppingList.push(ingLC);
+      updateListOfIngredients(ingLC, "addToShoppingList");
     };
 
-    detail.removeToShoppingList = function(elem) {
+    detail.removeFromShoppingList = function(elem) {
       detail.data.shoppingList.splice(detail.data.shoppingList.indexOf(elem),1);
       updateListOfIngredients(elem, "delete");
     };
@@ -127,7 +130,7 @@ angular.module('Foodies')
     var updateListOfIngredients = function (elem, mode) {
       for (var i = 0; i < detail.listOfIngredients.length; ++i) {
         if (detail.listOfIngredients[i].name.indexOf(elem) > -1) {
-          if(mode === "add"){
+          if(mode === "addToFridge"){
             detail.listOfIngredients[i].status = "onMyFridge";
           }else if (mode === "addToShoppingList"){
             detail.listOfIngredients[i].status = "onMyShoppingList";

@@ -16,7 +16,7 @@
     </div></p>
 
     <div>
-      <button type="button" class="btn btn-default" ng-click="detail.addToFrige()">Ajouter</button>
+      <button type="button" class="btn btn-default" ng-click="detail.addToFridge()">Ajouter</button>
     </div>
     <h1>Shopping list</h1>
     <p>Filtre :
@@ -25,8 +25,8 @@
     <ul class="list-group">
       <li class="list-group-item liStyleNone" ng-repeat="el in detail.data.shoppingList | filter: searchInShoppingList track by $index ">
         <span>{{el}}</span>
-        <span class="glyphicon glyphicon-arrow-up" ng-click="detail.add(el)"></span>
-        <span class="glyphicon glyphicon-trash" ng-click="detail.removeToShoppingList(el)"></span>
+        <span class="glyphicon glyphicon-arrow-up" ng-click="detail.fromListToFridge(el)"></span>
+        <span class="glyphicon glyphicon-trash" ng-click="detail.removeFromShoppingList(el)"></span>
       </li>
     </ul>
     <p>
@@ -44,7 +44,7 @@
       <li class="liStyleNone" ng-repeat="el in detail.listOfIngredients track by $index" ng-switch="el.status" >
         <div>
           <div ng-switch-when="onMyFridge" class="alert alert-success" role="alert">{{el.name}}</div>
-          <div ng-switch-when="onMyShoppingList" class="alert alert-info cursorPointer" role="alert"  ng-click="detail.removeToShoppingList(el.name)">{{el.name}}</div>
+          <div ng-switch-when="onMyShoppingList" class="alert alert-info cursorPointer" role="alert"  ng-click="detail.removeFromShoppingList(el.name)">{{el.name}}</div>
           <div ng-switch-when="nowhere" class="alert alert-danger cursorPointer" role="alert" ng-click="detail.addToShoppingList(el)">{{el.name}}</div>
         </div>
       </li>
