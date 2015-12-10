@@ -1,7 +1,7 @@
 # Foodie TODO
 
 - firebase (Renzo)
-	- shoppingList + fridge for all userLogin
+	- syncr shoppingList
 	
 
 - form research
