@@ -20,7 +20,8 @@
 	- salt shouldn't match unsalted 
 	- add/delete all to/from frige/shoppinglist
 	- redo algo (some bugs)
-	
+	- print error
+
 - Doc
 	- All
 
