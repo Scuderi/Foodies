@@ -15,12 +15,11 @@
 	- multi-pages result
 	
 - Detail
-	- lower case all ingredient (A finir)
+	- lower case all ingredient (Charlotte)
 	- show witch string match
 	- salt shouldn't match unsalted 
 	- add/delete all to/from frige/shoppinglist
 	- redo algo (some bugs)
-	- print shopping list (Charlotte)
 	
 - Doc
 	- All
