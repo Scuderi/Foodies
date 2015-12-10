@@ -13,8 +13,4 @@ angular.module('Foodies')
     var data = this;
     data.myFridge = ["chicken", "salt", "cheddar"];
     data.shoppingList = [];
-
-    this.save = function(elem){
-      window.localStorage.setItem(this.generateUUID(), JSON.stringify(elem));
-    };
   });
