@@ -1,7 +1,7 @@
 # Foodie TODO
 
-- firebase
-	- add to Foodie (server-side)
+- firebase (Renzo)
+	- add to Foodie (server-side) 
 	- create userLogin
 		- function salt + md5 pwd
 		- shoppingList + fridge for all userLogin
@@ -15,12 +15,12 @@
 	- multi-pages result
 	
 - Detail
-	- lower case all ingredient (Charlotte)
+	- lower case all ingredient (A finir)
 	- show witch string match
-	- salt shouldn't match unsalted
+	- salt shouldn't match unsalted 
 	- add/delete all to/from frige/shoppinglist
 	- redo algo (some bugs)
-	- Export shopping List to PDF or other
+	- print shopping list (Charlotte)
 	
 - Doc
 	- All
