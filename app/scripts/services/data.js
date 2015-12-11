@@ -16,19 +16,19 @@ angular.module('Foodies')
     data.listOfIngredients = [];
     data.id;
 
-    data.getMyData = function (){
+    data.getMyData = function () {
       users.login();
     };
 
-    data.logout = function (){
+    data.logout = function () {
       users.logout();
     };
 
-    auth.$onAuth(function(authData) {
+    auth.$onAuth(function (authData) {
       data.authData = authData;
-      if(data.authData !== null){
-        var ref = new Firebase("https://foodies.firebaseio.com/users/" + data.authData.uid + "/Fridge");
-        data.myFridge = $firebaseArray(ref);
+      if (data.authData !== null) {
+        data.myFridge = $firebaseArray(new Firebase("https://foodies.firebaseio.com/users/" + data.authData.uid + "/Fridge"));
+        data.shoppingList = $firebaseArray(new Firebase("https://foodies.firebaseio.com/users/" + data.authData.uid + "/ShoppingList"));
         //data.createListOfIngredient();
       }
     });
@@ -36,19 +36,20 @@ angular.module('Foodies')
     data.callDetailRecipe = function () {
       // load data for the recipe
       var promise = api.getDetailRecipe(data.id);
-
       promise.then(function () {
-
-      if(data.authData !== null){
-        data.myFridge.$loaded(function (list) {
-          data.listOfIngredients = [];
-          data.createListOfIngredient();
-        });}
+        if (data.authData !== null) {
+          data.myFridge.$loaded(function (list) {
+            data.listOfIngredients = [];
+            data.shoppingList.$loaded(function (list) {
+              data.createListOfIngredient();
+            });
+          });
+        }
       });
 
     };
 
-    data.createListOfIngredient = function (){
+    data.createListOfIngredient = function () {
       var status;
       for (var i = 0; i < api.detailRecipe.ingredients.length; ++i) {
         for (var y = 0; y < data.myFridge.length; ++y) {
@@ -57,7 +58,7 @@ angular.module('Foodies')
             break;
           } else {
             for (var z = 0; z < data.shoppingList.length; ++z) {
-              if (api.detailRecipe.ingredients[i].indexOf(data.shoppingList[z]) > -1){
+              if (api.detailRecipe.ingredients[i].indexOf(data.shoppingList[z]) > -1) {
                 status = "onMyShoppingList";
                 break;
               }

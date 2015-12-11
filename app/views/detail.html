@@ -14,7 +14,6 @@
     <div class="row">
       <div class="col-sm-4"><input type="text" ng-model="detail.ingredient"></input></div>
     </div></p>
-
     <div>
       <button type="button" class="btn btn-default" ng-click="detail.addToFridge()">Ajouter</button>
     </div>
@@ -24,7 +23,7 @@
 
     <ul class="list-group">
       <li class="list-group-item liStyleNone" ng-repeat="el in detail.data.shoppingList | filter: searchInShoppingList track by $index ">
-        <span>{{el}}</span>
+        <span>{{el.name}}</span>
         <span class="glyphicon glyphicon-arrow-up" ng-click="detail.fromListToFridge(el)"></span>
         <span class="glyphicon glyphicon-trash" ng-click="detail.removeFromShoppingList(el)"></span>
       </li>
@@ -49,7 +48,7 @@
       <li class="liStyleNone" ng-repeat="el in detail.data.listOfIngredients track by $index" ng-switch="el.status" >
         <div>
           <div ng-switch-when="onMyFridge" class="alert alert-success" role="alert">{{el.name}}</div>
-          <div ng-switch-when="onMyShoppingList" class="alert alert-info cursorPointer" role="alert"  ng-click="detail.removeFromShoppingList(el.name)">{{el.name}}</div>
+          <div ng-switch-when="onMyShoppingList" class="alert alert-info cursorPointer" role="alert"  ng-click="detail.removeFromShoppingListByName(el.name)">{{el.name}}</div>
           <div ng-switch-when="nowhere" class="alert alert-danger cursorPointer" role="alert" ng-click="detail.addToShoppingList(el)">{{el.name}}</div>
         </div>
       </li>

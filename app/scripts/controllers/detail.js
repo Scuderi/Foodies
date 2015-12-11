@@ -38,7 +38,7 @@ angular.module('Foodies')
         builder.addTextSize(1,1);
         builder.addTextStyle(false, false, false, undefined);
         //specify the print data
-        for(var i = 0; i< detail.data.shoppingList.length; ++i) {
+        for(var i = 0; i< detail.data.shoppingList.length; ++i) {     // TODO : shoppingList is now a synchronize-array : use for (elem : shoppingList) ..
           builder.addText('■ ' + detail.data.shoppingList[i]  +'\n');
         }
 
@@ -54,41 +54,6 @@ angular.module('Foodies')
       epos.send(request);
     }
 
-    /*
-    // load datas for the recipe
-    var promise = detail.api.getDetailRecipe(detail.id);
-    // check out if our ingredients in the fridge are in the recipe
-    promise.then(function(){
-        detail.createListOfIngredient();
-      }
-    );
-
-    detail.createListOfIngredient = function (){
-        var status;
-        for (var i = 0; i < detail.api.detailRecipe.ingredients.length; ++i) {
-          for (var y = 0; y < detail.data.myFridge.length; ++y) {
-            if (detail.api.detailRecipe.ingredients[i].indexOf(detail.data.myFridge[y].name) > -1) {
-              console.log(detail.data.myFridge[y].name);
-              status = "onMyFridge";
-              break;
-            } else {
-              for (var z = 0; z < detail.data.shoppingList.length; ++z) {
-                if (detail.api.detailRecipe.ingredients[i].indexOf(detail.data.shoppingList[z]) > -1){
-                  status = "onMyShoppingList";
-                  break;
-                }
-                else {
-                  status = "nowhere";
-                  break;
-                }
-              }
-            }
-          }
-          detail.listOfIngredients.push({name: detail.api.detailRecipe.ingredients[i].toLowerCase(), status: status});
-          status = "nowhere";
-        }
-    };*/
-
     detail.data.callDetailRecipe();
 
     detail.addToFridge = function() {
@@ -100,11 +65,10 @@ angular.module('Foodies')
 
     //from shopping list to the fridge
     detail.fromListToFridge = function(elem) {
-      var ingLC = elem.toLowerCase();
-      detail.data.myFridge.push(ingLC);
-      detail.removeFromShoppingList(elem);
+      var ingLC = elem.name.toLowerCase();
+      detail.data.myFridge.$add({name : ingLC}); // TODO : overload addToFridge() -> addToFridge(elem)
       updateListOfIngredients(ingLC, "addToFridge");
-      detail.ingredient = "";
+      detail.removeFromShoppingList(elem);
     };
 
     detail.removeFromFridge = function(elem) {
@@ -114,21 +78,24 @@ angular.module('Foodies')
 
     detail.addToShoppingList = function(elem) {
       var ingLC = elem.name.toLowerCase();
-      detail.data.shoppingList.push(ingLC);
+      detail.data.shoppingList.$add({name : ingLC});
       updateListOfIngredients(ingLC, "addToShoppingList");
     };
 
     detail.removeFromShoppingList = function(elem) {
-      detail.data.shoppingList.splice(detail.data.shoppingList.indexOf(elem),1);
+      detail.data.shoppingList.$remove(elem);
+      updateListOfIngredients(elem.name, "delete");
+    };
+
+    detail.removeFromShoppingListByName = function(elem) {
+      var find = null;
+      angular.forEach(detail.data.shoppingList, function(el) {
+          if(el.name === elem) {
+            find = el; // TODO : how to break in angular.forEach;
+          }
+        });
+      detail.data.shoppingList.$remove(find);
       updateListOfIngredients(elem, "delete");
-    };
-
-    detail.load = function(){
-      data.load();
-    };
-
-    detail.save = function (elem){
-      data.save(elem);
     };
 
     var updateListOfIngredients = function (elem, mode) {
