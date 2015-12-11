@@ -1,7 +1,7 @@
 <div  ng-controller="formCtrl">
   <form novalidate class="simple-form">
     <div class="form-group">
-      Ingredient: <input type="text" ng-model="search.ingredient" /><br />
+      Ingredient : <input type="text" ng-model="search.ingredient" /><br />
       <input type="submit" class="btn btn-primary" ng-click="update(search)" value="Search" />
     </div>
   </form>
@@ -10,7 +10,7 @@
   <div class="col-sm-6 col-md-4" ng-repeat="el in main.api.recipes track by $index">
     <div class="well">
     <div class="thumbnail" >
-      <div style="background-image: url({{el.image_url}}); height: 220px"></div>
+      <div style="background-image: url({{el.image_url}}); height: 220px" ng-click="main.showMore(el)"></div>
       <div class="caption">
         <h3>{{el.title}}</h3>
         <p><a href="#/detail/{{el.recipe_id}}" class="btn btn-primary" role="button">Détail</a></p>
@@ -19,3 +19,5 @@
     </div>
   </div>
 </div>
+
+<!-- ng-click est pas encore au point... -->
