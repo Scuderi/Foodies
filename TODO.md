@@ -1,8 +1,6 @@
 # Foodie TODO
 
-- firebase (Renzo)
-	- syncr shoppingList
-	
+- test printShoppingList with new firebaseArray
 
 - form research
 	- input check
@@ -19,8 +17,9 @@
 	- print error
 
 - Doc
-	- All
+	-  ->! All !<-
 
 - test
-	- all
+	- write testing procedure
+	- run test
 	
