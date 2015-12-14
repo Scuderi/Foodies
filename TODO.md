@@ -1,7 +1,5 @@
 # Foodie TODO
 
-- test printShoppingList with new firebaseArray
-
 - form research
 	- input check
 	- multi ingredient
@@ -9,17 +7,18 @@
 	- fail research
 	- multi-pages result
 	
-- Detail
+- DETAILS 
 	- show witch string match
-	- salt shouldn't match unsalted 
+	- salt shouldn't match unsalted (Charlotte)
 	- add/delete all to/from frige/shoppinglist
 	- redo algo (some bugs)
 	- print error
 
-- Doc
-	-  ->! All !<-
+- DOC
+	- README.md
 
-- test
+- TESTS
+  - test printShoppingList with new firebaseArray
 	- write testing procedure
 	- run test
 	
