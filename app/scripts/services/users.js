@@ -16,11 +16,11 @@ angular.module('Foodies')
     users.logout = function(){
       ref.unauth();
     };
-    users.login = function (){
+    users.login = function (login, password){
 
       ref.authWithPassword({
-        email    : "renzo.scuderi@gmail.com",
-        password : "test"
+        email    : login,
+        password : password
       }, function(error, authData) {
         if (error) {
           console.log("Login Failed!", error);

@@ -1,3 +1,5 @@
+
+
 <div class="row">
   <div  ng-show="detail.data.authData" class="col-sm-4 col-md-4">
     <h1>My Fridge</h1>
@@ -32,12 +34,6 @@
   </div>
   <div>
     <button ng-click="detail.buildMessage()">Print</button>
-  </div>
-  <div>
-    <button ng-hide="detail.data.authData" ng-click="detail.data.getMyData()">login</button>
-  </div>
-  <div>
-    <button ng-show="detail.data.authData" ng-click="detail.data.logout()">logout</button>
   </div>
 
   <div ng-show="detail.data.authData" class="col-sm-8 col-md-8">

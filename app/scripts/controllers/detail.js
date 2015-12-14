@@ -67,8 +67,8 @@ angular.module('Foodies')
     detail.fromListToFridge = function(elem) {
       var ingLC = elem.name.toLowerCase();
       detail.data.myFridge.$add({name : ingLC}); // TODO : overload addToFridge() -> addToFridge(elem)
-      updateListOfIngredients(ingLC, "addToFridge");
       detail.removeFromShoppingList(elem);
+      updateListOfIngredients(ingLC, "addToFridge");
     };
 
     detail.removeFromFridge = function(elem) {

@@ -29,7 +29,14 @@ angular.module('Foodies')
       if (data.authData !== null) {
         data.myFridge = $firebaseArray(new Firebase("https://foodies.firebaseio.com/users/" + data.authData.uid + "/Fridge"));
         data.shoppingList = $firebaseArray(new Firebase("https://foodies.firebaseio.com/users/" + data.authData.uid + "/ShoppingList"));
-        //data.createListOfIngredient();
+        data.myFridge.$loaded(function (list) {
+          data.listOfIngredients = [];
+          data.shoppingList.$loaded(function (list) {
+            data.listOfIngredients = [];
+            data.createListOfIngredient();
+            console.log("shopping + Fridge load on auth changed");
+          });
+        });
       }
     });
 
@@ -41,7 +48,9 @@ angular.module('Foodies')
           data.myFridge.$loaded(function (list) {
             data.listOfIngredients = [];
             data.shoppingList.$loaded(function (list) {
+              data.listOfIngredients = [];
               data.createListOfIngredient();
+              console.log("shopping + Fridge load on get API");
             });
           });
         }
