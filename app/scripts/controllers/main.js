@@ -8,13 +8,12 @@
  * Controller of the Foodies
  */
 angular.module('Foodies')
-  .controller('MainCtrl', function (api, $location, $scope) {
-    var MainCtrl = $scope;
+  .controller('MainCtrl', function (api, $location) {
     var main = this;
     main.api = api;
 
     //show the recipe
-    MainCtrl.showMore = function (elemid) {
+    main.showMore = function (elemid) {
      $location.path("/detail/" + elemid);
     };
   });
