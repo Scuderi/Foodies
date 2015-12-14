@@ -8,15 +8,14 @@
  * Controller of the Foodies
  */
 angular.module('Foodies')
-  .controller('MainCtrl', function (api) {
+  .controller('MainCtrl', function (api, $location, $scope) {
+    var MainCtrl = $scope;
     var main = this;
     main.api = api;
+
+    //show the recipe
+    MainCtrl.showMore = function (elemid) {
+     $location.path("/detail/" + elemid);
+    };
   });
 
-/*main.showMore = function(elem){
- var urlPage = "http://localhost:9000/#/detail/" + elem.recipe_id;
- return $http({
- method: 'GET',
- url: urlPage
- })
- pas au point encore */
