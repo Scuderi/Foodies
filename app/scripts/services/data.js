@@ -31,8 +31,8 @@ angular.module('Foodies')
         data.shoppingList = $firebaseArray(new Firebase("https://foodies.firebaseio.com/users/" + data.authData.uid + "/ShoppingList"));
         data.myFridge.$loaded(function (list) {
           data.shoppingList.$loaded(function (list) {
-            console.log("shopping + Fridge load on auth changed");
             data.createListOfIngredient();
+            console.log("shopping + Fridge load on auth changed");
           });
         });
       }
@@ -55,7 +55,7 @@ angular.module('Foodies')
     };
 
     data.createListOfIngredient = function () {
-      if(api.detailRecipe === undefined){ // cakk from $onAuth before api primise. The list will be create later by callDetailRecipe
+      if(api.detailRecipe === undefined){ // call from $onAuth before api primise. The list will be create later by callDetailRecipe
         return;
       }
       var status;
@@ -73,7 +73,6 @@ angular.module('Foodies')
               }
               else {
                 status = "nowhere";
-                break;
               }
             }
           }

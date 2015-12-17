@@ -69,8 +69,10 @@ angular.module('Foodies')
     };
 
     detail.removeFromFridge = function(elem) {
-      detail.data.myFridge.$remove(elem);
-      updateListOfIngredients(elem.name, "delete");
+      detail.data.myFridge.$remove(elem).then(function (){
+        updateListOfIngredients(elem.name, "delete");
+      })
+
     };
 
     detail.addToShoppingList = function(elem) {
@@ -80,8 +82,9 @@ angular.module('Foodies')
     };
 
     detail.removeFromShoppingList = function(elem) {
-      detail.data.shoppingList.$remove(elem);
-      updateListOfIngredients(elem.name, "delete");
+      detail.data.shoppingList.$remove(elem).then(function (){
+        updateListOfIngredients(elem.name, "delete");
+      })
     };
 
     detail.removeFromShoppingListByName = function(elem) {
@@ -91,8 +94,9 @@ angular.module('Foodies')
             find = el; // TODO : how to break in angular.forEach;
           }
         });
-      detail.data.shoppingList.$remove(find);
-      updateListOfIngredients(elem, "delete");
+      detail.data.shoppingList.$remove(find).then(function (){
+        updateListOfIngredients(find.name, "delete");
+      })
     };
 
     var updateListOfIngredients = function (elem, mode) {
@@ -104,7 +108,8 @@ angular.module('Foodies')
             detail.data.listOfIngredients[i].status = "onMyShoppingList";
           }
           else if(mode === "delete"){
-            detail.data.listOfIngredients[i].status = "nowhere";
+            //detail.data.listOfIngredients[i].status = "nowhere";
+            detail.data.createListOfIngredient();
           }
           else{
             console.log("error : mode non reconnu");
