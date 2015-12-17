@@ -30,11 +30,9 @@ angular.module('Foodies')
         data.myFridge = $firebaseArray(new Firebase("https://foodies.firebaseio.com/users/" + data.authData.uid + "/Fridge"));
         data.shoppingList = $firebaseArray(new Firebase("https://foodies.firebaseio.com/users/" + data.authData.uid + "/ShoppingList"));
         data.myFridge.$loaded(function (list) {
-          data.listOfIngredients = [];
           data.shoppingList.$loaded(function (list) {
-            data.listOfIngredients = [];
-            data.createListOfIngredient();
             console.log("shopping + Fridge load on auth changed");
+            data.createListOfIngredient();
           });
         });
       }
@@ -46,9 +44,7 @@ angular.module('Foodies')
       promise.then(function () {
         if (data.authData !== null) {
           data.myFridge.$loaded(function (list) {
-            data.listOfIngredients = [];
             data.shoppingList.$loaded(function (list) {
-              data.listOfIngredients = [];
               data.createListOfIngredient();
               console.log("shopping + Fridge load on get API");
             });
@@ -59,7 +55,11 @@ angular.module('Foodies')
     };
 
     data.createListOfIngredient = function () {
+      if(api.detailRecipe === undefined){ // cakk from $onAuth before api primise. The list will be create later by callDetailRecipe
+        return;
+      }
       var status;
+      data.listOfIngredients = [];
       for (var i = 0; i < api.detailRecipe.ingredients.length; ++i) {
         for (var y = 0; y < data.myFridge.length; ++y) {
           if (api.detailRecipe.ingredients[i].indexOf(data.myFridge[y].name) > -1) {
@@ -67,7 +67,7 @@ angular.module('Foodies')
             break;
           } else {
             for (var z = 0; z < data.shoppingList.length; ++z) {
-              if (api.detailRecipe.ingredients[i].indexOf(data.shoppingList[z]) > -1) {
+              if (api.detailRecipe.ingredients[i].indexOf(data.shoppingList[z].name) > -1) {
                 status = "onMyShoppingList";
                 break;
               }
