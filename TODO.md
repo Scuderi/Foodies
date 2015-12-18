@@ -21,4 +21,7 @@
   - test printShoppingList with new firebaseArray
 	- write testing procedure
 	- run test
+
+- BUG
+  - de shoppinglist à fridge : Ingrédients ne reste pas en vert
 	
