@@ -58,7 +58,7 @@ angular.module('Foodies')
       if(api.detailRecipe === undefined){ // call from $onAuth before api primise. The list will be create later by callDetailRecipe
         return;
       }
-      var status;
+      var status = "nowhere";
       data.listOfIngredients = [];
       for (var i = 0; i < api.detailRecipe.ingredients.length; ++i) {
         for (var y = 0; y < data.myFridge.length; ++y) {

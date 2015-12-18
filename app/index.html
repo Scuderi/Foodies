@@ -50,7 +50,7 @@
                   </div>
                 <button ng-click="login(submit)" value="signIn" type="submit" class="btn btn-default">Sign in</button>
               </form>
-              <div class="form-group" ng-show="authData" ><button class="btn btn-default" ng-click="logout()">logout</button></div>
+              <div class="row" ng-show="authData"><button class="btn btn-default" ng-click="logout()">   logout</button> <span class="glyphicon glyphicon-user">   {{authData.password.email}}</span></ul></div>
             </ul>
           </div>
           </div>
