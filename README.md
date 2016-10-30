@@ -1,4 +1,4 @@
-# recipies-test
+# Foodies
 
 ## Créateurs
 Renzo Scuderi
